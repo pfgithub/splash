@@ -134,3 +134,8 @@ splash
 !examples/*.shortcut
 *.splash
 !examples/*.splash
+
+# node and webpack
+node_modules
+dist/*.bundle.js
+yarn.lock

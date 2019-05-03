@@ -1,14 +1,14 @@
 //
-//  SplashDocument.swift
+//  ScPLDocument.swift
 //  splash
 //
-//  Created by Gonzo Fialho on 03/03/19.
+//  Created by pfg on 5/3/19.
 //  Copyright © 2019 Gonzo Fialho. All rights reserved.
 //
 
 import UIKit
 
-class SplashDocumentOld: UIDocument {
+class SplashDocument: UIDocument {
     enum ExecutionError: LocalizedError, Equatable {
         case saveError
         case compilationError(String)
@@ -60,34 +60,14 @@ class SplashDocumentOld: UIDocument {
                     return
                 }
 
-                let tempDirectoryPath = NSTemporaryDirectory()
-                let shortcutPath = (tempDirectoryPath as NSString).appendingPathComponent("temp.shortcut")
-
-                var errorMessage: UnsafeMutablePointer<Int8>?
-
-                let parseError = parse(self.fileURL.path,
-                                       shortcutPath,
-                                       &errorMessage)
-                if parseError != 0 {
-                    print(errorMessage as Any)
-                    let message = String(cString: errorMessage!)
-                    completion(.compilationError(message))
-                    free(errorMessage!)
-                    return
-                }
-
-                completion(self.run(fromPath: shortcutPath))
+                ScPLCompiler.shared.compile(self.string, completion: { base64 in
+                    completion(self.run(base64: base64))
+                })
         }
     }
 
-    func run(fromPath path: String) -> ExecutionError? {
-        let nsDictionary = NSDictionary(contentsOfFile: path)!
-        // swiftlint:disable:next force_try
-        let data = try! PropertyListSerialization.data(fromPropertyList: nsDictionary,
-                                                       format: .binary,
-                                                       options: 0)
-
-        let b64 = "data:text/shortcut;base64," + data.base64EncodedString()
+    func run(base64: String) -> ExecutionError? {
+        let b64 = "data:text/shortcut;base64," + base64
         var urlComponents = URLComponents(string: "shortcuts://import-shortcut")!
         let queryItems = [URLQueryItem(name: "name", value: fileTitle),
                           URLQueryItem(name: "url", value: b64)]
