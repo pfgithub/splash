@@ -63,6 +63,8 @@
 		B74606B3227CCA6E00241FF2 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = B746F57A227CCA6800241FF2 /* index.js */; };
 		B74606B4227CCA6E00241FF2 /* webpack.config.js in Resources */ = {isa = PBXBuildFile; fileRef = B746F57B227CCA6800241FF2 /* webpack.config.js */; };
 		B74606B6227CCA6E00241FF2 /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = B746F57D227CCA6800241FF2 /* package.json */; };
+		B74606B8227CCF9B00241FF2 /* CodeDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74606B7227CCF9B00241FF2 /* CodeDocument.swift */; };
+		B74606BA227CDB4E00241FF2 /* ScPL.scpl in Resources */ = {isa = PBXBuildFile; fileRef = B74606B9227CDB4E00241FF2 /* ScPL.scpl */; };
 		B746E02C227CB8D000241FF2 /* ScPLDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746E02B227CB8D000241FF2 /* ScPLDocument.swift */; };
 		B746E02F227CBD3E00241FF2 /* ScPLCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746E02E227CBD3E00241FF2 /* ScPLCompiler.swift */; };
 		B746F57E227CCA6900241FF2 /* parser.bundle.js in Resources */ = {isa = PBXBuildFile; fileRef = B746E03E227CCA5F00241FF2 /* parser.bundle.js */; };
@@ -182,6 +184,8 @@
 		9FCD88F8222AC54E00220811 /* structures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = structures.h; sourceTree = "<group>"; };
 		9FCD88F9222AC54E00220811 /* splash.lm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = splash.lm; sourceTree = "<group>"; };
 		9FD1B90E222C299D0088B5A0 /* splash_compiler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = splash_compiler.h; sourceTree = "<group>"; };
+		B74606B7227CCF9B00241FF2 /* CodeDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeDocument.swift; sourceTree = "<group>"; };
+		B74606B9227CDB4E00241FF2 /* ScPL.scpl */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScPL.scpl; sourceTree = "<group>"; };
 		B746E02B227CB8D000241FF2 /* ScPLDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScPLDocument.swift; sourceTree = "<group>"; };
 		B746E02E227CBD3E00241FF2 /* ScPLCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScPLCompiler.swift; sourceTree = "<group>"; };
 		B746E03E227CCA5F00241FF2 /* parser.bundle.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = parser.bundle.js; sourceTree = "<group>"; };
@@ -333,6 +337,7 @@
 				9F159E6C2235B88700ECF57C /* Age.splash */,
 				9F159E6A2235B88700ECF57C /* Leap Year.splash */,
 				9F159E6B2235B88700ECF57C /* Quadratic Solver.splash */,
+				B74606B9227CDB4E00241FF2 /* ScPL.scpl */,
 			);
 			path = examples;
 			sourceTree = SOURCE_ROOT;
@@ -342,6 +347,7 @@
 			children = (
 				9F6C462E222C819000BD8625 /* SplashDocument.swift */,
 				B746E02B227CB8D000241FF2 /* ScPLDocument.swift */,
+				B74606B7227CCF9B00241FF2 /* CodeDocument.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -541,6 +547,7 @@
 				9FCD8906222AC54E00220811 /* splash.lm in Resources */,
 				B746F57E227CCA6900241FF2 /* parser.bundle.js in Resources */,
 				B74606B6227CCA6E00241FF2 /* package.json in Resources */,
+				B74606BA227CDB4E00241FF2 /* ScPL.scpl in Resources */,
 				9F518980222ABC0A0054A381 /* LaunchScreen.storyboard in Resources */,
 				9F51897D222ABC0A0054A381 /* Assets.xcassets in Resources */,
 				9F159E6D2235B88700ECF57C /* Leap Year.splash in Resources */,
@@ -637,6 +644,7 @@
 				9F518976222ABC0A0054A381 /* AppDelegate.swift in Sources */,
 				9F8AC12822389338002044CB /* ThemeManager.swift in Sources */,
 				9F8AC12C22389424002044CB /* UserDefaults+Constants.swift in Sources */,
+				B74606B8227CCF9B00241FF2 /* CodeDocument.swift in Sources */,
 				B746E02C227CB8D000241FF2 /* ScPLDocument.swift in Sources */,
 				9F2603A5223B42EA00C337F5 /* OnboardViewController+Github.swift in Sources */,
 			);

@@ -26,7 +26,7 @@ class EditorNavigationController: UINavigationController {
 
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 
-    func set(_ document: SplashDocument, completion: @escaping () -> Void) {
+    func set(_ document: CodeDocument, completion: @escaping () -> Void) {
         guard let editorViewController = viewControllers.first as? EditorViewController else {return}
 
         editorViewController.set(document, completion: completion)
@@ -46,9 +46,9 @@ class EditorViewController: UIViewController {
 
     var observers = [Any]()
 
-    var splashDocument: SplashDocument? {
+    var codeDocument: CodeDocument? {
         didSet {
-            title = splashDocument?.fileName
+            title = codeDocument?.fileName
         }
     }
 
@@ -109,8 +109,8 @@ class EditorViewController: UIViewController {
         })
     }
 
-    func set(_ document: SplashDocument, completion: @escaping () -> Void) {
-        self.splashDocument = document
+    func set(_ document: CodeDocument, completion: @escaping () -> Void) {
+        self.codeDocument = document
         document.open { success in
             guard success else {return}
 
@@ -158,7 +158,7 @@ class EditorViewController: UIViewController {
     }
 
     @objc func closeEditor(completion: (() -> Void)?) {
-        guard let document = splashDocument else {
+        guard let document = codeDocument else {
             dismiss(animated: true, completion: completion)
             return
         }
@@ -176,7 +176,7 @@ class EditorViewController: UIViewController {
     }
 
     @objc func compileAndRun(sender: UIBarButtonItem?) {
-        guard let document = splashDocument else {return}
+        guard let document = codeDocument else {return}
         document.string = textView.text ?? ""
         document.compileAndRun { [unowned self] (error) in
             if let error = error {

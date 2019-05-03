@@ -81,7 +81,7 @@ class BrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
         let tempDirectoryPath = NSTemporaryDirectory()
         var name = name.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !name.isEmpty else {return nil}
-        if !name.lowercased().hasSuffix(".splash") {
+        if !name.lowercased().hasSuffix(".splash") && !name.lowercased().hasSuffix(".scpl") {
             name += ".splash"
         }
         let filePath = (tempDirectoryPath as NSString).appendingPathComponent("\(name)")

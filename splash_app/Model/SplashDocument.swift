@@ -8,51 +8,9 @@
 
 import UIKit
 
-class SplashDocumentOld: UIDocument {
-    enum ExecutionError: LocalizedError, Equatable {
-        case saveError
-        case compilationError(String)
-        case shortcutsNotFound
+class SplashDocument: CodeDocument {
 
-        var errorDescription: String? {
-            switch self {
-            case .saveError: return "Unknown error when saving file"
-            case .compilationError(let message): return "Compilation error: \(message)"
-            case .shortcutsNotFound: return "Shortctus app not found."
-            }
-        }
-    }
-
-    /// Just the last path component with extension
-    var fileName: String {
-        return (self.fileURL.path as NSString)
-            .lastPathComponent
-    }
-
-    /// File name without extension
-    var fileTitle: String {
-        return (fileName as NSString)
-            .deletingPathExtension
-    }
-
-    var string = String() {
-        didSet {
-            string.formatForCode()
-        }
-    }
-
-    override func contents(forType typeName: String) throws -> Any {
-        string.formatForCode()
-        let data = string.data(using: .utf8)!
-        return data
-    }
-
-    override func load(fromContents contents: Any, ofType typeName: String?) throws {
-        guard let data = contents as? Data else {return}
-        self.string = String(data: data, encoding: .utf8)!
-    }
-
-    func compileAndRun(completion: @escaping (ExecutionError?) -> Void) {
+    override func compileAndRun(completion: @escaping (ExecutionError?) -> Void) {
         save(to: fileURL,
              for: .forOverwriting) { [unowned self] (completed) in
                 guard completed else {

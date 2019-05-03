@@ -71,7 +71,17 @@ class ViewController: UIDocumentBrowserViewController {
         }
 
         let editorViewController = EditorNavigationController()
-        let document = SplashDocument(fileURL: url)
+        // if fileurl endswith .splash
+        var document: CodeDocument
+        
+        switch url.pathExtension {
+        case "splash":
+            document = SplashDocument(fileURL: url);
+        case "scpl":
+            document = ScPLDocument(fileURL: url);
+        default:
+            document = CodeDocument(fileURL: url)
+        }
 
         editorViewController.transitioningDelegate = self
         let transitioningController = transitionController(forDocumentAt: url)
