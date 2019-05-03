@@ -440,6 +440,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F51899A222ABC0A0054A381 /* Build configuration list for PBXNativeTarget "splash" */;
 			buildPhases = (
+				B74606BF227CE0AD00241FF2 /* Webpack */,
 				9F51896E222ABC0A0054A381 /* Sources */,
 				9F51896F222ABC0A0054A381 /* Frameworks */,
 				9F518970222ABC0A0054A381 /* Resources */,
@@ -589,6 +590,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint or \\`brew install swiftlint\\`\"\n    exit 1\nfi\n";
+		};
+		B74606BF227CE0AD00241FF2 /* Webpack */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/splash_app/ScPL/javascript/index.js",
+			);
+			name = Webpack;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/splash_app/ScPL/dist/parser.bundle.js",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd splash_app/ScPL/javascript/\nyarn install\nyarn build\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
