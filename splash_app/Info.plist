@@ -22,6 +22,16 @@
 				<string>ninja.gonzo.splash.script</string>
 			</array>
 		</dict>
+		<dict>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>dev.scpl.scpl.script</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>scpl</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
