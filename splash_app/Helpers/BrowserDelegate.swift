@@ -34,11 +34,23 @@ class BrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
             textField.placeholder = "File name"
         }
         alertController.addAction(
-            UIAlertAction(title: "Create",
+            UIAlertAction(title: "Create Splash",
                           style: .default,
                           handler: { _ in
                             let url = self.createNewFile(
-                                named: alertController.textFields?.first?.text ?? "")
+                                named: alertController.textFields?.first?.text ?? "", fileFormat: "splash")
+                            if let url = url {
+                                importHandler(url, .move)
+                            } else {
+                                importHandler(nil, .none)
+                            }
+            }))
+        alertController.addAction(
+            UIAlertAction(title: "Create ScPL",
+                          style: .default,
+                          handler: { _ in
+                            let url = self.createNewFile(
+                                named: alertController.textFields?.first?.text ?? "", fileFormat: "scpl")
                             if let url = url {
                                 importHandler(url, .move)
                             } else {
@@ -77,12 +89,12 @@ class BrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
                                completion: nil)
     }
 
-    fileprivate func createNewFile(named name: String) -> URL? {
+    fileprivate func createNewFile(named name: String, fileFormat: String) -> URL? {
         let tempDirectoryPath = NSTemporaryDirectory()
         var name = name.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !name.isEmpty else {return nil}
-        if !name.lowercased().hasSuffix(".splash") && !name.lowercased().hasSuffix(".scpl") {
-            name += ".splash"
+        if !name.lowercased().hasSuffix("."+fileFormat) {
+            name += "." + fileFormat
         }
         let filePath = (tempDirectoryPath as NSString).appendingPathComponent("\(name)")
         let url = URL(fileURLWithPath: filePath)
