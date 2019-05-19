@@ -33,7 +33,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>ninja.gonzo.scpl.script</string>
+				<string>dev.scpl.scpl.script</string>
 			</array>
 		</dict>
 	</array>
@@ -108,8 +108,10 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>scpl source code</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
 			<key>UTTypeIdentifier</key>
-			<string>ninja.gonzo.scpl.script</string>
+			<string>dev.scpl.scpl.script</string>
 			<key>UTTypeReferenceURL</key>
 			<string>https://scpl.dev/</string>
 			<key>UTTypeTagSpecification</key>

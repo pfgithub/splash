@@ -16,7 +16,7 @@ class ViewController: UIDocumentBrowserViewController {
     var observers = [Any]()
 
     init() {
-        super.init(forOpeningFilesWithContentTypes: ["ninja.gonzo.splash.script"])
+        super.init(forOpeningFilesWithContentTypes: ["ninja.gonzo.splash.script", "dev.scpl.scpl.script"])
         delegate = browserDelegate
         let button = UIBarButtonItem(title: "Settings",
                                      style: .plain,
