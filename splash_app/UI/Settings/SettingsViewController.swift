@@ -62,7 +62,7 @@ class SettingsViewController: UITableViewController {
                          url: URL(string: "https://docs.scpl.dev/")!)
             ]),
         Section(title: nil, rows: [
-            Link(name: "Repor an issue",
+            Link(name: "Report an issue",
                  url: URL(string: "https://github.com/gonzula/splash/issues/new")!),
             CustomAction(name: "App Version: \(Bundle.main.fullVersion)",
                 action: {
