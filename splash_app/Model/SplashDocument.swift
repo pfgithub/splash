@@ -9,6 +9,10 @@
 import UIKit
 
 class SplashDocument: CodeDocument {
+    
+    override var documentationURL: URL? {
+        return URL(string: "https://github.com/gonzula/splash/blob/master/Documentation/README.md");
+    }
 
     override func compileAndRun(completion: @escaping (ExecutionError?) -> Void) {
         save(to: fileURL,

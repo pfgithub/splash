@@ -23,6 +23,10 @@ class CodeDocument: UIDocument {
         }
     }
 
+    var documentationURL: URL? {
+        return nil;
+    }
+    
     /// Just the last path component with extension
     var fileName: String {
         return (self.fileURL.path as NSString)

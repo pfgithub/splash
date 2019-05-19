@@ -90,6 +90,10 @@ class EditorViewController: UIViewController {
         navigationItem.rightBarButtonItems?.append(UIBarButtonItem(barButtonSystemItem: .play,
                                                                    target: self,
                                                                    action: #selector(compileAndRun(sender:))))
+        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(title: "Docs",
+                                                                   style: .plain,
+                                                                   target: self,
+                                                                   action: #selector(getDocs(sender:))))
     }
 
     fileprivate func setupObservers() {
@@ -174,7 +178,7 @@ class EditorViewController: UIViewController {
                         }
         }
     }
-
+    
     @objc func compileAndRun(sender: UIBarButtonItem?) {
         guard let document = codeDocument else {return}
         document.string = textView.text ?? ""
@@ -186,6 +190,13 @@ class EditorViewController: UIViewController {
                     self.present(UIAlertController(error: error), animated: true, completion: nil)
                 }
             }
+        }
+    }
+    
+    @objc func getDocs(sender: UIBarButtonItem?) {
+        guard let document = codeDocument else {return}
+        if let link = document.documentationURL {
+            UIApplication.shared.open(link);
         }
     }
 }

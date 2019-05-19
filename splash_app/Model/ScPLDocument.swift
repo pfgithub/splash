@@ -9,6 +9,11 @@
 import UIKit
 
 class ScPLDocument: CodeDocument {
+    
+    override var documentationURL: URL? {
+        return URL(string: "https://docs.scpl.dev/");
+    }
+    
     override func compileAndRun(completion: @escaping (ExecutionError?) -> Void) {
         save(to: fileURL,
              for: .forOverwriting) { [unowned self] (completed) in
