@@ -73,12 +73,12 @@ class ViewController: UIDocumentBrowserViewController {
         let editorViewController = EditorNavigationController()
         // if fileurl endswith .splash
         var document: CodeDocument
-        
+
         switch url.pathExtension {
         case "splash":
-            document = SplashDocument(fileURL: url);
+            document = SplashDocument(fileURL: url)
         case "scpl":
-            document = ScPLDocument(fileURL: url);
+            document = ScPLDocument(fileURL: url)
         default:
             document = CodeDocument(fileURL: url)
         }

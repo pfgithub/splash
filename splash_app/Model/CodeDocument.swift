@@ -13,7 +13,7 @@ class CodeDocument: UIDocument {
         case saveError
         case compilationError(String)
         case shortcutsNotFound
-        
+
         var errorDescription: String? {
             switch self {
             case .saveError: return "Unknown error when saving file"
@@ -22,36 +22,36 @@ class CodeDocument: UIDocument {
             }
         }
     }
-    
+
     /// Just the last path component with extension
     var fileName: String {
         return (self.fileURL.path as NSString)
             .lastPathComponent
     }
-    
+
     /// File name without extension
     var fileTitle: String {
         return (fileName as NSString)
             .deletingPathExtension
     }
-    
+
     var string = String() {
         didSet {
             string.formatForCode()
         }
     }
-    
+
     override func contents(forType typeName: String) throws -> Any {
         string.formatForCode()
         let data = string.data(using: .utf8)!
         return data
     }
-    
+
     override func load(fromContents contents: Any, ofType typeName: String?) throws {
         guard let data = contents as? Data else {return}
         self.string = String(data: data, encoding: .utf8)!
     }
-    
+
     func compileAndRun(completion: @escaping (ExecutionError?) -> Void) {
         save(to: fileURL,
              for: .forOverwriting) { (completed) in
@@ -65,12 +65,12 @@ private extension String {
         convertToLF()
         appendTrailingNewLineIfNeeded()
     }
-    
+
     private mutating func convertToLF() {
         self = replacingOccurrences(of: "\r\n", with: "\n")
         self = replacingOccurrences(of: "\r", with: "")
     }
-    
+
     private mutating func appendTrailingNewLineIfNeeded() {
         if !hasSuffix("\n") {
             append("\n")
